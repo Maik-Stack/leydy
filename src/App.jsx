@@ -95,7 +95,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 1.1, duration: 0.9, ease: "easeOut" }}
             >
-              Leydy Yulieth
+              Leydy Yulietd
               <br />
               Colorado Martínez
             </motion.h1>
