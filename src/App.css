@@ -1,0 +1,159 @@
+.stage {
+  position: relative;
+  width: 100vw;
+  height: 100dvh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(160deg, #3a2452 0%, #5b3468 45%, #8a4a6b 100%);
+  transition: background 1.8s ease;
+}
+
+.stage-field {
+  background: linear-gradient(160deg, #3d2a55 0%, #6a3f6b 45%, #b06a5f 100%);
+}
+
+.stage-message {
+  background: linear-gradient(160deg, #2c1a3d 0%, #55305c 45%, #a1553f 100%);
+}
+
+/* ---------- Falling petals ---------- */
+
+.petals-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.petal {
+  position: absolute;
+  top: -5%;
+  border-radius: 60% 40% 60% 40% / 60% 60% 40% 40%;
+  opacity: 0.75;
+  filter: blur(0.2px);
+  animation-name: petal-fall;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+}
+
+@keyframes petal-fall {
+  0% {
+    transform: translate(0, -10vh) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.75;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translate(var(--drift), 115vh) rotate(var(--spin));
+    opacity: 0;
+  }
+}
+
+/* ---------- Intro single flower ---------- */
+
+.intro-flower {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  filter: drop-shadow(0 0 30px rgba(255, 211, 77, 0.35));
+  cursor: pointer;
+  outline: none;
+}
+
+.intro-flower:focus-visible {
+  filter: drop-shadow(0 0 30px rgba(255, 211, 77, 0.35))
+    drop-shadow(0 0 0 3px rgba(255, 211, 77, 0.6));
+}
+
+.intro-hint {
+  margin: 0;
+  color: #fceecb;
+  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  letter-spacing: 0.08em;
+  font-weight: 300;
+  opacity: 0.85;
+}
+
+/* ---------- Flower field ---------- */
+
+.flower-field {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.flower-field-item {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.15));
+}
+
+/* ---------- Message card ---------- */
+
+.message-card {
+  position: relative;
+  z-index: 4;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: clamp(1.75rem, 6vw, 3.5rem) clamp(1.5rem, 7vw, 4rem);
+  margin: 1.25rem;
+  max-width: min(90vw, 640px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 28px;
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.35);
+}
+
+.message-heart {
+  font-size: clamp(2.2rem, 6vw, 3rem);
+  display: inline-block;
+  margin-bottom: 0.5rem;
+}
+
+.message-lead {
+  margin: 0;
+  color: #fceecb;
+  font-weight: 300;
+  letter-spacing: 0.05em;
+  font-size: clamp(1.05rem, 3.2vw, 1.4rem);
+}
+
+.message-name {
+  margin: 0.6rem 0 0;
+  font-family: "Great Vibes", "Brush Script MT", cursive;
+  font-weight: 400;
+  line-height: 1.15;
+  color: #ffd34d;
+  font-size: clamp(2.4rem, 8vw, 4.2rem);
+  text-shadow: 0 2px 18px rgba(255, 211, 77, 0.45);
+}
+
+.message-underline {
+  margin-top: 1.25rem;
+  width: min(70%, 220px);
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ffd34d, transparent);
+  transform-origin: center;
+}
+
+/* ---------- Small screens ---------- */
+
+@media (max-width: 420px) {
+  .message-card {
+    border-radius: 20px;
+  }
+}
